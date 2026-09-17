@@ -2,14 +2,880 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AriaChat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>آریاچت | چت‌روم فارسی</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background: #eef1f5;
+            color: #20242a;
+            min-height: 100vh;
+        }
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+        /* ---------- APP ---------- */
+
+        .app {
+            width: 100%;
+            max-width: 600px;
+            height: 100vh;
+            height: 100dvh;
+            margin: auto;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* ---------- HEADER ---------- */
+
+        .header {
+            height: 68px;
+            min-height: 68px;
+            background: linear-gradient(135deg, #6d3df5, #8d5cff);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            box-shadow: 0 2px 12px rgba(0,0,0,.12);
+            z-index: 10;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            width: 43px;
+            height: 43px;
+            border-radius: 14px;
+            background: rgba(255,255,255,.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+            font-weight: bold;
+            border: 1px solid rgba(255,255,255,.3);
+        }
+
+        .brand-text h1 {
+            font-size: 19px;
+            margin-bottom: 3px;
+        }
+
+        .brand-text span {
+            font-size: 11px;
+            opacity: .85;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 7px;
+        }
+
+        .header-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(255,255,255,.15);
+            color: white;
+            font-size: 19px;
+            cursor: pointer;
+        }
+
+        /* ---------- ONLINE BAR ---------- */
+
+        .online-bar {
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 15px;
+            border-bottom: 1px solid #e9ebef;
+            background: #fff;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .online-bar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .online-title {
+            font-size: 12px;
+            color: #777;
+            white-space: nowrap;
+            margin-left: 5px;
+        }
+
+        .online-user {
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            border-radius: 50%;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            position: relative;
+            border: 2px solid white;
+            box-shadow: 0 1px 5px rgba(0,0,0,.12);
+        }
+
+        .online-user::after {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #2ecc71;
+            border: 2px solid white;
+            border-radius: 50%;
+            bottom: -1px;
+            left: -1px;
+        }
+
+        /* ---------- ROOM INFO ---------- */
+
+        .room-info {
+            padding: 13px 16px;
+            background: #fafafa;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .room-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .room-name {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .room-count {
+            font-size: 11px;
+            color: #777;
+            margin-top: 4px;
+        }
+
+        .online-dot {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            background: #2ecc71;
+            border-radius: 50%;
+            margin-left: 4px;
+        }
+
+        /* ---------- CHAT ---------- */
+
+        .chat {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px 13px 20px;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(115,70,245,.04), transparent 25%),
+                #f5f6f8;
+            scroll-behavior: smooth;
+        }
+
+        .welcome {
+            text-align: center;
+            margin: 7px auto 18px;
+            max-width: 310px;
+            color: #777;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        .welcome-icon {
+            width: 54px;
+            height: 54px;
+            margin: 0 auto 8px;
+            border-radius: 17px;
+            background: linear-gradient(135deg,#6d3df5,#9b72ff);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 27px;
+            box-shadow: 0 7px 20px rgba(109,61,245,.2);
+        }
+
+        .date {
+            text-align: center;
+            margin: 12px 0;
+        }
+
+        .date span {
+            background: #e5e7ec;
+            color: #777;
+            padding: 5px 11px;
+            border-radius: 20px;
+            font-size: 10px;
+        }
+
+        /* ---------- MESSAGE ---------- */
+
+        .message {
+            display: flex;
+            align-items: flex-end;
+            gap: 7px;
+            margin-bottom: 12px;
+            animation: messageIn .2s ease;
+        }
+
+        @keyframes messageIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .avatar {
+            width: 35px;
+            height: 35px;
+            min-width: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg,#d9d9df,#f5f5f7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .message-content {
+            max-width: 78%;
+        }
+
+        .username {
+            font-size: 10px;
+            color: #7250d9;
+            font-weight: bold;
+            margin: 0 8px 3px;
+        }
+
+        .bubble {
+            background: white;
+            border-radius: 16px 16px 16px 4px;
+            padding: 9px 12px;
+            box-shadow: 0 1px 4px rgba(0,0,0,.07);
+            font-size: 13px;
+            line-height: 1.7;
+            word-break: break-word;
+        }
+
+        .time {
+            font-size: 8px;
+            color: #aaa;
+            margin: 3px 7px 0;
+        }
+
+        .message.me {
+            flex-direction: row-reverse;
+        }
+
+        .message.me .message-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .message.me .username {
+            color: #6d3df5;
+        }
+
+        .message.me .bubble {
+            background: linear-gradient(135deg,#7144f5,#8256f6);
+            color: white;
+            border-radius: 16px 16px 4px 16px;
+        }
+
+        .message.me .time {
+            text-align: left;
+        }
+
+        /* ---------- TYPING ---------- */
+
+        .typing {
+            display: none;
+            align-items: center;
+            gap: 7px;
+            padding: 0 15px 7px;
+            color: #888;
+            font-size: 10px;
+            background: #f5f6f8;
+        }
+
+        .typing.show {
+            display: flex;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 3px;
+        }
+
+        .typing-dots i {
+            width: 5px;
+            height: 5px;
+            background: #999;
+            border-radius: 50%;
+            animation: dot 1s infinite;
+        }
+
+        .typing-dots i:nth-child(2) {
+            animation-delay: .15s;
+        }
+
+        .typing-dots i:nth-child(3) {
+            animation-delay: .3s;
+        }
+
+        @keyframes dot {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        /* ---------- INPUT ---------- */
+
+        .input-area {
+            background: white;
+            border-top: 1px solid #e4e5e8;
+            padding: 9px 10px;
+            padding-bottom: max(9px, env(safe-area-inset-bottom));
+        }
+
+        .input-row {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .input-button {
+            width: 41px;
+            height: 41px;
+            min-width: 41px;
+            border: none;
+            border-radius: 13px;
+            background: #f0f0f4;
+            color: #666;
+            font-size: 19px;
+            cursor: pointer;
+        }
+
+        .input-box {
+            flex: 1;
+            min-width: 0;
+            height: 43px;
+            border-radius: 14px;
+            border: 1px solid #e0e1e5;
+            background: #f8f8fa;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+        }
+
+        .input-box input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 13px;
+            direction: rtl;
+        }
+
+        .input-box input::placeholder {
+            color: #aaa;
+        }
+
+        .send {
+            width: 43px;
+            height: 43px;
+            min-width: 43px;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(135deg,#6d3df5,#8b5cff);
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(109,61,245,.25);
+        }
+
+        .send:active,
+        .input-button:active,
+        .header-btn:active {
+            transform: scale(.94);
+        }
+
+        /* ---------- EMOJI PANEL ---------- */
+
+        .emoji-panel {
+            display: none;
+            background: white;
+            border-top: 1px solid #eee;
+            padding: 10px;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 8px;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .emoji-panel.show {
+            display: grid;
+        }
+
+        .emoji {
+            border: none;
+            background: transparent;
+            font-size: 23px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        /* ---------- SIDE MENU ---------- */
+
+        .overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.35);
+            z-index: 20;
+        }
+
+        .overlay.show {
+            display: block;
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -290px;
+            width: 275px;
+            height: 100%;
+            background: white;
+            z-index: 30;
+            transition: right .25s ease;
+            box-shadow: -5px 0 25px rgba(0,0,0,.15);
+            padding: 22px 15px;
+        }
+
+        .side-menu.show {
+            right: 0;
+        }
+
+        .menu-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 12px;
+        }
+
+        .big-logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 17px;
+            background: linear-gradient(135deg,#6d3df5,#925fff);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 27px;
+        }
+
+        .menu-brand {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .menu-brand small {
+            display: block;
+            color: #999;
+            font-size: 10px;
+            font-weight: normal;
+            margin-top: 3px;
+        }
+
+        .menu-item {
+            width: 100%;
+            border: none;
+            background: transparent;
+            padding: 14px 12px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            cursor: pointer;
+            text-align: right;
+        }
+
+        .menu-item:hover {
+            background: #f5f3ff;
+        }
+
+        /* ---------- DARK MODE ---------- */
+
+        body.dark {
+            background: #101116;
+        }
+
+        body.dark .app {
+            background: #17181d;
+            color: #eee;
+        }
+
+        body.dark .online-bar,
+        body.dark .room-info,
+        body.dark .input-area {
+            background: #17181d;
+            border-color: #292b32;
+        }
+
+        body.dark .room-info {
+            background: #15161a;
+        }
+
+        body.dark .chat,
+        body.dark .typing {
+            background: #101116;
+        }
+
+        body.dark .bubble {
+            background: #22242b;
+            color: #eee;
+        }
+
+        body.dark .input-box {
+            background: #22242b;
+            border-color: #33353d;
+        }
+
+        body.dark .input-button {
+            background: #25272e;
+            color: #ddd;
+        }
+
+        body.dark .side-menu {
+            background: #18191e;
+            color: white;
+        }
+
+        body.dark .menu-item:hover {
+            background: #25232f;
+        }
+
+        body.dark .menu-header {
+            border-color: #2b2c33;
+        }
+
+        /* ---------- DESKTOP ---------- */
+
+        @media (min-width: 601px) {
+            body {
+                padding: 20px 0;
+            }
+
+            .app {
+                height: calc(100vh - 40px);
+                border-radius: 20px;
+                box-shadow: 0 10px 45px rgba(0,0,0,.12);
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>آریاچت</h1>
-    <p>چت‌روم فارسی مخصوص موبایل</p>
+<div class="app">
 
-</body>
-</html>
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="brand">
+            <div class="logo">💬</div>
+
+            <div class="brand-text">
+                <h1>آریاچت</h1>
+                <span>چت‌روم فارسی</span>
+            </div>
+        </div>
+
+        <div class="header-buttons">
+            <button class="header-btn" onclick="toggleDark()" title="حالت شب">🌙</button>
+            <button class="header-btn" onclick="openMenu()" title="منو">☰</button>
+        </div>
+
+    </header>
+
+
+    <!-- ONLINE USERS -->
+    <div class="online-bar">
+
+        <span class="online-title">
+            🟢 آنلاین:
+        </span>
+
+        <div class="online-user">👨🏻</div>
+        <div class="online-user">👩🏻</div>
+        <div class="online-user">🧑🏻</div>
+        <div class="online-user">👨🏻</div>
+        <div class="online-user">👩🏻</div>
+        <div class="online-user">🧔🏻</div>
+
+    </div>
+
+
+    <!-- ROOM INFO -->
+    <div class="room-info">
+
+        <div class="room-title">
+
+            <div>
+                <div class="room-name">
+                    <span class="online-dot"></span>
+                    اتاق عمومی
+                </div>
+
+                <div class="room-count">
+                    ۲۴ کاربر آنلاین
+                </div>
+            </div>
+
+            <div style="font-size:20px;">👥</div>
+
+        </div>
+
+    </div>
+
+
+    <!-- CHAT -->
+    <main class="chat" id="chat">
+
+        <div class="welcome">
+
+            <div class="welcome-icon">💬</div>
+
+            <div>
+                به <b>آریاچت</b> خوش آمدید 🌹
+                <br>
+                با احترام با دیگر کاربران گفتگو کنید.
+            </div>
+
+        </div>
+
+
+        <div class="date">
+            <span>امروز</span>
+        </div>
+
+
+        <!-- MESSAGE 1 -->
+        <div class="message">
+
+            <div class="avatar">👨🏻</div>
+
+            <div class="message-content">
+
+                <div class="username">
+                    علی
+                </div>
+
+                <div class="bubble">
+                    سلام بچه‌ها 👋
+                </div>
+
+                <div class="time">
+                    ۲۲:۰۵
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MESSAGE 2 -->
+        <div class="message">
+
+            <div class="avatar">👩🏻</div>
+
+            <div class="message-content">
+
+                <div class="username">
+                    سارا
+                </div>
+
+                <div class="bubble">
+                    سلام علی جان 🌹 خوبی؟
+                </div>
+
+                <div class="time">
+                    ۲۲:۰۶
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MESSAGE 3 -->
+        <div class="message me">
+
+            <div class="avatar">🙂</div>
+
+            <div class="message-content">
+
+                <div class="username">
+                    شما
+                </div>
+
+                <div class="bubble">
+                    سلام به همه ❤️
+                </div>
+
+                <div class="time">
+                    ۲۲:۰۷ ✓✓
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MESSAGE 4 -->
+        <div class="message">
+
+            <div class="avatar">🧑🏻</div>
+
+            <div class="message-content">
+
+                <div class="username">
+                    امیر
+                </div>
+
+                <div class="bubble">
+                    اینجا خیلی خوبه 😄
+                </div>
+
+                <div class="time">
+                    ۲۲:۰۸
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- TYPING -->
+    <div class="typing" id="typing">
+
+        <div class="typing-dots">
+            <i></i>
+            <i></i>
+            <i></i>
+        </div>
+
+        کاربری در حال نوشتن است...
+
+    </div>
+
+
+    <!-- EMOJI -->
+    <div class="emoji-panel" id="emojiPanel">
+
+        <button class="emoji">😀</button>
+        <button class="emoji">😂</button>
+        <button class="emoji">😍</button>
+        <button class="emoji">🥰</button>
+        <button class="emoji">😎</button>
+        <button class="emoji">🤔</button>
+        <button class="emoji">😢</button>
+        <button class="emoji">😡</button>
+        <button class="emoji">❤️</button>
+        <button class="emoji">🧡</button>
+        <button class="emoji">💛</button>
+        <button class="emoji">💚</button>
+        <button class="emoji">💙</button>
+        <button class="emoji">💜</button>
+        <button class="emoji">👍</button>
+        <button class="emoji">👎</button>
+        <button class="emoji">🔥</button>
+        <button class="emoji">🌹</button>
+        <button class="emoji">😂</button>
+        <button class="emoji">🤣</button>
+        <button class="emoji">🙏</button>
+        <button class="emoji">🎉</button>
+        <button class="emoji">✨</button>
+        <button class="emoji">💯</button>
+
+    </div>
+
+
+    <!-- INPUT -->
+    <div class="input-area">
+
+        <div class="input-row">
+
+            <button
+                class="input-button"
+                onclick="toggleEmoji()"
+                title="ایموجی">
+                😊
+            </button>
+
+            <div class="input-box">
+
+                <input
+                    id="messageInput"
+                    type="text"
+                    maxlength="300"
+                    placeholder="پیامت را بنویس..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+            <button
+                class="send"
+                onclick="sendMessage()"
+                title="ارسال">
+                ➤
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- OVERLAY -->
+<div
+    class="overlay"
+ 
