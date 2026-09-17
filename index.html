@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>آریاچت | چت‌روم فارسی</title>
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -25,7 +29,13 @@
             font-family: inherit;
         }
 
-        /* ---------- APP ---------- */
+        button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* =========================
+           APP
+        ========================= */
 
         .app {
             width: 100%;
@@ -39,18 +49,29 @@
             overflow: hidden;
         }
 
-        /* ---------- HEADER ---------- */
+
+        /* =========================
+           HEADER
+        ========================= */
 
         .header {
             height: 68px;
             min-height: 68px;
-            background: linear-gradient(135deg, #6d3df5, #8d5cff);
+
+            background:
+                linear-gradient(135deg, #6d3df5, #8d5cff);
+
             color: white;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             padding: 0 15px;
-            box-shadow: 0 2px 12px rgba(0,0,0,.12);
+
+            box-shadow:
+                0 2px 12px rgba(0,0,0,.12);
+
             z-index: 10;
         }
 
@@ -63,14 +84,21 @@
         .logo {
             width: 43px;
             height: 43px;
+
             border-radius: 14px;
-            background: rgba(255,255,255,.2);
+
+            background:
+                rgba(255,255,255,.2);
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             font-size: 23px;
             font-weight: bold;
-            border: 1px solid rgba(255,255,255,.3);
+
+            border:
+                1px solid rgba(255,255,255,.3);
         }
 
         .brand-text h1 {
@@ -91,25 +119,44 @@
         .header-btn {
             width: 40px;
             height: 40px;
+
             border: none;
             border-radius: 12px;
-            background: rgba(255,255,255,.15);
+
+            background:
+                rgba(255,255,255,.15);
+
             color: white;
+
             font-size: 19px;
+
             cursor: pointer;
+
+            transition: .15s;
         }
 
-        /* ---------- ONLINE BAR ---------- */
+
+        /* =========================
+           ONLINE BAR
+        ========================= */
 
         .online-bar {
             min-height: 48px;
+
             display: flex;
             align-items: center;
+
             gap: 8px;
+
             padding: 0 15px;
-            border-bottom: 1px solid #e9ebef;
+
+            border-bottom:
+                1px solid #e9ebef;
+
             background: #fff;
+
             overflow-x: auto;
+
             scrollbar-width: none;
         }
 
@@ -120,7 +167,9 @@
         .online-title {
             font-size: 12px;
             color: #777;
+
             white-space: nowrap;
+
             margin-left: 5px;
         }
 
@@ -128,40 +177,62 @@
             width: 32px;
             height: 32px;
             min-width: 32px;
+
             border-radius: 50%;
+
             background: #eee;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             font-size: 14px;
+
             position: relative;
+
             border: 2px solid white;
-            box-shadow: 0 1px 5px rgba(0,0,0,.12);
+
+            box-shadow:
+                0 1px 5px rgba(0,0,0,.12);
         }
 
         .online-user::after {
             content: "";
+
             position: absolute;
+
             width: 8px;
             height: 8px;
+
             background: #2ecc71;
+
             border: 2px solid white;
+
             border-radius: 50%;
+
             bottom: -1px;
             left: -1px;
         }
 
-        /* ---------- ROOM INFO ---------- */
+
+        /* =========================
+           ROOM INFO
+        ========================= */
 
         .room-info {
             padding: 13px 16px;
+
             background: #fafafa;
-            border-bottom: 1px solid #e8e8e8;
+
+            border-bottom:
+                1px solid #e8e8e8;
         }
 
         .room-title {
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
         }
 
@@ -172,52 +243,91 @@
 
         .room-count {
             font-size: 11px;
+
             color: #777;
+
             margin-top: 4px;
         }
 
         .online-dot {
             display: inline-block;
+
             width: 7px;
             height: 7px;
+
             background: #2ecc71;
+
             border-radius: 50%;
+
             margin-left: 4px;
         }
 
-        /* ---------- CHAT ---------- */
+
+        /* =========================
+           CHAT
+        ========================= */
 
         .chat {
             flex: 1;
+
             overflow-y: auto;
-            padding: 15px 13px 20px;
+
+            padding:
+                15px 13px 20px;
+
             background:
-                radial-gradient(circle at 10% 10%, rgba(115,70,245,.04), transparent 25%),
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(115,70,245,.04),
+                    transparent 25%
+                ),
                 #f5f6f8;
+
             scroll-behavior: smooth;
         }
 
         .welcome {
             text-align: center;
-            margin: 7px auto 18px;
+
+            margin:
+                7px auto 18px;
+
             max-width: 310px;
+
             color: #777;
+
             font-size: 11px;
+
             line-height: 1.8;
         }
 
         .welcome-icon {
             width: 54px;
             height: 54px;
-            margin: 0 auto 8px;
+
+            margin:
+                0 auto 8px;
+
             border-radius: 17px;
-            background: linear-gradient(135deg,#6d3df5,#9b72ff);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6d3df5,
+                    #9b72ff
+                );
+
             color: white;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             font-size: 27px;
-            box-shadow: 0 7px 20px rgba(109,61,245,.2);
+
+            box-shadow:
+                0 7px 20px
+                rgba(109,61,245,.2);
         }
 
         .date {
@@ -227,42 +337,67 @@
 
         .date span {
             background: #e5e7ec;
+
             color: #777;
-            padding: 5px 11px;
+
+            padding:
+                5px 11px;
+
             border-radius: 20px;
+
             font-size: 10px;
         }
 
-        /* ---------- MESSAGE ---------- */
+
+        /* =========================
+           MESSAGE
+        ========================= */
 
         .message {
             display: flex;
+
             align-items: flex-end;
+
             gap: 7px;
+
             margin-bottom: 12px;
-            animation: messageIn .2s ease;
+
+            animation:
+                messageIn .2s ease;
         }
 
         @keyframes messageIn {
+
             from {
                 opacity: 0;
                 transform: translateY(5px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
+
         }
 
         .avatar {
             width: 35px;
             height: 35px;
             min-width: 35px;
+
             border-radius: 50%;
-            background: linear-gradient(135deg,#d9d9df,#f5f5f7);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #d9d9df,
+                    #f5f5f7
+                );
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             font-size: 14px;
         }
 
@@ -272,25 +407,41 @@
 
         .username {
             font-size: 10px;
+
             color: #7250d9;
+
             font-weight: bold;
-            margin: 0 8px 3px;
+
+            margin:
+                0 8px 3px;
         }
 
         .bubble {
             background: white;
-            border-radius: 16px 16px 16px 4px;
-            padding: 9px 12px;
-            box-shadow: 0 1px 4px rgba(0,0,0,.07);
+
+            border-radius:
+                16px 16px 16px 4px;
+
+            padding:
+                9px 12px;
+
+            box-shadow:
+                0 1px 4px rgba(0,0,0,.07);
+
             font-size: 13px;
+
             line-height: 1.7;
+
             word-break: break-word;
         }
 
         .time {
             font-size: 8px;
+
             color: #aaa;
-            margin: 3px 7px 0;
+
+            margin:
+                3px 7px 0;
         }
 
         .message.me {
@@ -299,7 +450,9 @@
 
         .message.me .message-content {
             display: flex;
+
             flex-direction: column;
+
             align-items: flex-end;
         }
 
@@ -308,24 +461,42 @@
         }
 
         .message.me .bubble {
-            background: linear-gradient(135deg,#7144f5,#8256f6);
+            background:
+                linear-gradient(
+                    135deg,
+                    #7144f5,
+                    #8256f6
+                );
+
             color: white;
-            border-radius: 16px 16px 4px 16px;
+
+            border-radius:
+                16px 16px 4px 16px;
         }
 
         .message.me .time {
             text-align: left;
         }
 
-        /* ---------- TYPING ---------- */
+
+        /* =========================
+           TYPING
+        ========================= */
 
         .typing {
             display: none;
+
             align-items: center;
+
             gap: 7px;
-            padding: 0 15px 7px;
+
+            padding:
+                0 15px 7px;
+
             color: #888;
+
             font-size: 10px;
+
             background: #f5f6f8;
         }
 
@@ -341,9 +512,13 @@
         .typing-dots i {
             width: 5px;
             height: 5px;
+
             background: #999;
+
             border-radius: 50%;
-            animation: dot 1s infinite;
+
+            animation:
+                dot 1s infinite;
         }
 
         .typing-dots i:nth-child(2) {
@@ -355,22 +530,42 @@
         }
 
         @keyframes dot {
-            0%,100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
+
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-4px);
+            }
+
         }
 
-        /* ---------- INPUT ---------- */
+
+        /* =========================
+           INPUT
+        ========================= */
 
         .input-area {
             background: white;
-            border-top: 1px solid #e4e5e8;
+
+            border-top:
+                1px solid #e4e5e8;
+
             padding: 9px 10px;
-            padding-bottom: max(9px, env(safe-area-inset-bottom));
+
+            padding-bottom:
+                max(
+                    9px,
+                    env(safe-area-inset-bottom)
+                );
         }
 
         .input-row {
             display: flex;
+
             align-items: center;
+
             gap: 7px;
         }
 
@@ -378,32 +573,54 @@
             width: 41px;
             height: 41px;
             min-width: 41px;
+
             border: none;
+
             border-radius: 13px;
+
             background: #f0f0f4;
+
             color: #666;
+
             font-size: 19px;
+
             cursor: pointer;
+
+            transition: .15s;
         }
 
         .input-box {
             flex: 1;
+
             min-width: 0;
+
             height: 43px;
+
             border-radius: 14px;
-            border: 1px solid #e0e1e5;
+
+            border:
+                1px solid #e0e1e5;
+
             background: #f8f8fa;
+
             display: flex;
+
             align-items: center;
+
             padding: 0 12px;
         }
 
         .input-box input {
             width: 100%;
+
             border: none;
+
             outline: none;
+
             background: transparent;
+
             font-size: 13px;
+
             direction: rtl;
         }
 
@@ -415,13 +632,29 @@
             width: 43px;
             height: 43px;
             min-width: 43px;
+
             border: none;
+
             border-radius: 14px;
-            background: linear-gradient(135deg,#6d3df5,#8b5cff);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6d3df5,
+                    #8b5cff
+                );
+
             color: white;
+
             font-size: 18px;
+
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(109,61,245,.25);
+
+            box-shadow:
+                0 4px 12px
+                rgba(109,61,245,.25);
+
+            transition: .15s;
         }
 
         .send:active,
@@ -430,16 +663,28 @@
             transform: scale(.94);
         }
 
-        /* ---------- EMOJI PANEL ---------- */
+
+        /* =========================
+           EMOJI
+        ========================= */
 
         .emoji-panel {
             display: none;
+
             background: white;
-            border-top: 1px solid #eee;
+
+            border-top:
+                1px solid #eee;
+
             padding: 10px;
-            grid-template-columns: repeat(8, 1fr);
+
+            grid-template-columns:
+                repeat(8, 1fr);
+
             gap: 8px;
+
             max-height: 150px;
+
             overflow-y: auto;
         }
 
@@ -449,19 +694,31 @@
 
         .emoji {
             border: none;
+
             background: transparent;
+
             font-size: 23px;
+
             cursor: pointer;
+
             padding: 4px;
         }
 
-        /* ---------- SIDE MENU ---------- */
+
+        /* =========================
+           OVERLAY
+        ========================= */
 
         .overlay {
             display: none;
+
             position: fixed;
+
             inset: 0;
-            background: rgba(0,0,0,.35);
+
+            background:
+                rgba(0,0,0,.35);
+
             z-index: 20;
         }
 
@@ -469,17 +726,35 @@
             display: block;
         }
 
+
+        /* =========================
+           SIDE MENU
+        ========================= */
+
         .side-menu {
             position: fixed;
+
             top: 0;
+
             right: -290px;
+
             width: 275px;
+
             height: 100%;
+
             background: white;
+
             z-index: 30;
-            transition: right .25s ease;
-            box-shadow: -5px 0 25px rgba(0,0,0,.15);
-            padding: 22px 15px;
+
+            transition:
+                right .25s ease;
+
+            box-shadow:
+                -5px 0 25px
+                rgba(0,0,0,.15);
+
+            padding:
+                22px 15px;
         }
 
         .side-menu.show {
@@ -488,57 +763,97 @@
 
         .menu-header {
             display: flex;
+
             align-items: center;
+
             gap: 12px;
+
             padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+
+            border-bottom:
+                1px solid #eee;
+
             margin-bottom: 12px;
         }
 
         .big-logo {
             width: 52px;
             height: 52px;
+
             border-radius: 17px;
-            background: linear-gradient(135deg,#6d3df5,#925fff);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6d3df5,
+                    #925fff
+                );
+
             color: white;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             font-size: 27px;
         }
 
         .menu-brand {
             font-size: 17px;
+
             font-weight: bold;
         }
 
         .menu-brand small {
             display: block;
+
             color: #999;
+
             font-size: 10px;
+
             font-weight: normal;
+
             margin-top: 3px;
         }
 
         .menu-item {
             width: 100%;
+
             border: none;
+
             background: transparent;
+
             padding: 14px 12px;
+
             border-radius: 12px;
+
             display: flex;
+
             align-items: center;
+
             gap: 12px;
+
             font-size: 13px;
+
             cursor: pointer;
+
             text-align: right;
+
+            color: inherit;
+
+            transition: .15s;
         }
 
         .menu-item:hover {
             background: #f5f3ff;
         }
 
-        /* ---------- DARK MODE ---------- */
+
+        /* =========================
+           DARK MODE
+        ========================= */
 
         body.dark {
             background: #101116;
@@ -546,6 +861,7 @@
 
         body.dark .app {
             background: #17181d;
+
             color: #eee;
         }
 
@@ -553,6 +869,7 @@
         body.dark .room-info,
         body.dark .input-area {
             background: #17181d;
+
             border-color: #292b32;
         }
 
@@ -567,21 +884,25 @@
 
         body.dark .bubble {
             background: #22242b;
+
             color: #eee;
         }
 
         body.dark .input-box {
             background: #22242b;
+
             border-color: #33353d;
         }
 
         body.dark .input-button {
             background: #25272e;
+
             color: #ddd;
         }
 
         body.dark .side-menu {
             background: #18191e;
+
             color: white;
         }
 
@@ -593,111 +914,225 @@
             border-color: #2b2c33;
         }
 
-        /* ---------- DESKTOP ---------- */
+        body.dark .emoji-panel {
+            background: #18191e;
+
+            border-color: #2b2c33;
+        }
+
+
+        /* =========================
+           DESKTOP
+        ========================= */
 
         @media (min-width: 601px) {
+
             body {
                 padding: 20px 0;
             }
 
             .app {
-                height: calc(100vh - 40px);
+                height:
+                    calc(100vh - 40px);
+
                 border-radius: 20px;
-                box-shadow: 0 10px 45px rgba(0,0,0,.12);
+
+                box-shadow:
+                    0 10px 45px
+                    rgba(0,0,0,.12);
             }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
 <div class="app">
 
-    <!-- HEADER -->
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
     <header class="header">
 
         <div class="brand">
-            <div class="logo">💬</div>
+
+            <div class="logo">
+                💬
+            </div>
 
             <div class="brand-text">
-                <h1>آریاچت</h1>
-                <span>چت‌روم فارسی</span>
+
+                <h1>
+                    آریاچت
+                </h1>
+
+                <span>
+                    چت‌روم فارسی
+                </span>
+
             </div>
+
         </div>
 
+
         <div class="header-buttons">
-            <button class="header-btn" onclick="toggleDark()" title="حالت شب">🌙</button>
-            <button class="header-btn" onclick="openMenu()" title="منو">☰</button>
+
+            <button
+                class="header-btn"
+                onclick="toggleDark()"
+                title="حالت شب">
+
+                🌙
+
+            </button>
+
+
+            <button
+                class="header-btn"
+                onclick="openMenu()"
+                title="منو">
+
+                ☰
+
+            </button>
+
         </div>
 
     </header>
 
 
-    <!-- ONLINE USERS -->
+
+    <!-- =========================
+         ONLINE USERS
+    ========================= -->
+
     <div class="online-bar">
 
         <span class="online-title">
             🟢 آنلاین:
         </span>
 
-        <div class="online-user">👨🏻</div>
-        <div class="online-user">👩🏻</div>
-        <div class="online-user">🧑🏻</div>
-        <div class="online-user">👨🏻</div>
-        <div class="online-user">👩🏻</div>
-        <div class="online-user">🧔🏻</div>
+        <div class="online-user">
+            👨🏻
+        </div>
+
+        <div class="online-user">
+            👩🏻
+        </div>
+
+        <div class="online-user">
+            🧑🏻
+        </div>
+
+        <div class="online-user">
+            👨🏻
+        </div>
+
+        <div class="online-user">
+            👩🏻
+        </div>
+
+        <div class="online-user">
+            🧔🏻
+        </div>
 
     </div>
 
 
-    <!-- ROOM INFO -->
+
+    <!-- =========================
+         ROOM INFO
+    ========================= -->
+
     <div class="room-info">
 
         <div class="room-title">
 
             <div>
+
                 <div class="room-name">
+
                     <span class="online-dot"></span>
+
                     اتاق عمومی
+
                 </div>
 
-                <div class="room-count">
+
+                <div
+                    class="room-count"
+                    id="roomCount">
+
                     ۲۴ کاربر آنلاین
+
                 </div>
+
             </div>
 
-            <div style="font-size:20px;">👥</div>
+
+            <div style="font-size:20px;">
+                👥
+            </div>
 
         </div>
 
     </div>
 
 
-    <!-- CHAT -->
-    <main class="chat" id="chat">
+
+    <!-- =========================
+         CHAT
+    ========================= -->
+
+    <main
+        class="chat"
+        id="chat">
+
 
         <div class="welcome">
 
-            <div class="welcome-icon">💬</div>
+            <div class="welcome-icon">
+                💬
+            </div>
 
             <div>
+
                 به <b>آریاچت</b> خوش آمدید 🌹
+
                 <br>
+
                 با احترام با دیگر کاربران گفتگو کنید.
+
             </div>
 
         </div>
 
 
+
         <div class="date">
-            <span>امروز</span>
+
+            <span>
+                امروز
+            </span>
+
         </div>
 
 
-        <!-- MESSAGE 1 -->
+
+        <!-- MESSAGE -->
+
         <div class="message">
 
-            <div class="avatar">👨🏻</div>
+            <div class="avatar">
+                👨🏻
+            </div>
 
             <div class="message-content">
 
@@ -718,164 +1153,6 @@
         </div>
 
 
-        <!-- MESSAGE 2 -->
-        <div class="message">
 
-            <div class="avatar">👩🏻</div>
+        <!-- MESSAGE -->
 
-            <div class="message-content">
-
-                <div class="username">
-                    سارا
-                </div>
-
-                <div class="bubble">
-                    سلام علی جان 🌹 خوبی؟
-                </div>
-
-                <div class="time">
-                    ۲۲:۰۶
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- MESSAGE 3 -->
-        <div class="message me">
-
-            <div class="avatar">🙂</div>
-
-            <div class="message-content">
-
-                <div class="username">
-                    شما
-                </div>
-
-                <div class="bubble">
-                    سلام به همه ❤️
-                </div>
-
-                <div class="time">
-                    ۲۲:۰۷ ✓✓
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- MESSAGE 4 -->
-        <div class="message">
-
-            <div class="avatar">🧑🏻</div>
-
-            <div class="message-content">
-
-                <div class="username">
-                    امیر
-                </div>
-
-                <div class="bubble">
-                    اینجا خیلی خوبه 😄
-                </div>
-
-                <div class="time">
-                    ۲۲:۰۸
-                </div>
-
-            </div>
-
-        </div>
-
-    </main>
-
-
-    <!-- TYPING -->
-    <div class="typing" id="typing">
-
-        <div class="typing-dots">
-            <i></i>
-            <i></i>
-            <i></i>
-        </div>
-
-        کاربری در حال نوشتن است...
-
-    </div>
-
-
-    <!-- EMOJI -->
-    <div class="emoji-panel" id="emojiPanel">
-
-        <button class="emoji">😀</button>
-        <button class="emoji">😂</button>
-        <button class="emoji">😍</button>
-        <button class="emoji">🥰</button>
-        <button class="emoji">😎</button>
-        <button class="emoji">🤔</button>
-        <button class="emoji">😢</button>
-        <button class="emoji">😡</button>
-        <button class="emoji">❤️</button>
-        <button class="emoji">🧡</button>
-        <button class="emoji">💛</button>
-        <button class="emoji">💚</button>
-        <button class="emoji">💙</button>
-        <button class="emoji">💜</button>
-        <button class="emoji">👍</button>
-        <button class="emoji">👎</button>
-        <button class="emoji">🔥</button>
-        <button class="emoji">🌹</button>
-        <button class="emoji">😂</button>
-        <button class="emoji">🤣</button>
-        <button class="emoji">🙏</button>
-        <button class="emoji">🎉</button>
-        <button class="emoji">✨</button>
-        <button class="emoji">💯</button>
-
-    </div>
-
-
-    <!-- INPUT -->
-    <div class="input-area">
-
-        <div class="input-row">
-
-            <button
-                class="input-button"
-                onclick="toggleEmoji()"
-                title="ایموجی">
-                😊
-            </button>
-
-            <div class="input-box">
-
-                <input
-                    id="messageInput"
-                    type="text"
-                    maxlength="300"
-                    placeholder="پیامت را بنویس..."
-                    autocomplete="off"
-                >
-
-            </div>
-
-            <button
-                class="send"
-                onclick="sendMessage()"
-                title="ارسال">
-                ➤
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- OVERLAY -->
-<div
-    class="overlay"
- 
